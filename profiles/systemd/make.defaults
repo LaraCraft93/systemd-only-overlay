@@ -1,1 +1,4 @@
 USE="systemd"
+INSTALL_MASK="/etc/init.d
+              /etc/conf.d
+              /etc/runlevels"
