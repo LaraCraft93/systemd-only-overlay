@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 2014 Lara Maia <lara@craft.net.br>
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -14,25 +14,32 @@ SRC_URI="${HOMEPAGE}/tarball/${GIT_COMMIT} -> ${P}.tar.gz"
 # efunctions has no license declared. Assume it is unchanged until I
 # contact the author and get that sorted out...
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="1"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="!sys-apps/openrc
-	!<sys-apps/baselayout-2.0
-	"
+    !<sys-apps/baselayout-2.0
+    "
 
 src_install() {
-	local dst_dir=/usr/$(get_libdir)/${PN}
+    local dst_dir=/usr/$(get_libdir)/${PN}
 
-	dodir etc/init.d
-	dosym ../..${dst_dir}/functions.sh /etc/init.d/functions.sh
+    dodir $dst_dir
+    insinto $dst_dir
+    doins ${S}/functions.sh
+    doins -r ${S}/efunctions
 
-	dodir $dst_dir
-	insinto $dst_dir
-	doins ${S}/functions.sh
-	doins -r ${S}/efunctions
+    fperms -R +x $dst_dir
+}
 
-	fperms -R +x $dst_dir
+pkg_postinst() {
+    local dst_dir=/usr/$(get_libdir)/${PN}
+
+    ln -s $dst_dir/functions.sh /etc/init.d/functions.sh
+}
+
+pkg_postrm() {
+    unlink /etc/init.d/functions.sh
 }
