@@ -2,12 +2,12 @@
   <repo quality="experimental" status="unofficial">
     <name>systemd-only</name>
     <description lang="en">Systemd only overlay</description>
-    <homepage>https://github.com/PessoalProjects/systemd-only-overlay</homepage>
+    <homepage>https://github.com/LaraCraft93/systemd-only-overlay</homepage>
     <owner type="person">
       <email>lara@craft.net.br</email>
       <name>Lara Maia</name>
     </owner>
-    <source type="git">git://github.com/PessoalProjects/systemd-only-overlay.git</source>
-    <feed>https://github.com/PessoalProjects/systemd-only-overlay/commits/master.atom</feed>
+    <source type="git">git://github.com/LaraCraft93/systemd-only-overlay.git</source>
+    <feed>https://github.com/LaraCraft93/systemd-only-overlay/commits/master.atom</feed>
   </repo>
 </repositories>
